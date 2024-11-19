@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convite para o Cinema</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #fff;
+        font-family: Arial, sans-serif;
+    }
+
+    .box {
+        background-color: #007bff;
+        color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        width: 300px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .box h2 {
+        margin-bottom: 20px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .button-yes {
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .button-no {
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        position: relative;
+    }
+
+    .button-no:hover {
+        animation: moveButton 0.2s ease-in-out;
+    }
+
+    @keyframes moveButton {
+        0% { transform: translateX(0); }
+        50% { transform: translateX(20px); }
+        100% { transform: translateX(-20px); }
+    }
+</style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Aneakin, vamos no cinema amanhã? Te pago um xiquinho.</h2>
+    <div class="buttons">
+        <button class="button-yes" onclick="showPopup()">SIM</button>
+        <button class="button-no" id="noButton">NÃO</button>
+    </div>
+</div>
+
+<script>
+    // Função para mostrar o pop-up quando clicar em "SIM"
+    function showPopup() {
+        alert("Beleza, vamos lá <3.");
+    }
+
+    // Função para fazer o botão "NÃO" fugir do mouse
+    const noButton = document.getElementById('noButton');
+
+    noButton.addEventListener('mouseover', () => {
+        const randomX = Math.floor(Math.random() * (window.innerWidth - noButton.clientWidth));
+        const randomY = Math.floor(Math.random() * (window.innerHeight - noButton.clientHeight));
+        noButton.style.position = 'absolute';
+        noButton.style.left = `${randomX}px`;
+        noButton.style.top = `${randomY}px`;
+    });
+</script>
+
+</body>
+</html>
